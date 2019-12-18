@@ -1,0 +1,26 @@
+{
+  "status": "firing",
+  "externalURL": "http://alertmanager.example.com",
+  "alerts": [
+    {
+      "labels": {
+        "alertname": "http probe 2xx",
+        "instance": "node-exporter:9100"
+      },
+      "annotations": {
+        "summary": "node-exporter:9100 - Not OK",
+        "description": "Expected HTTP status 2xx, got 0 for http://node-exporter:9100",
+        "severity": "major"
+      }
+    },
+    {
+      "labels": {
+        "alertname": "coffee_ready",
+        "instance": "ecm-brewer"
+      },
+      "annotations": {
+        "summary": "ecm-brewer - Just made a nice cup of hot coffee"
+      }
+    }
+  ]
+}
