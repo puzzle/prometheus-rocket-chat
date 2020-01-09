@@ -4,6 +4,18 @@ A Rocket.Chat webhook that receives Prometheus Alertmananager alerts, creates co
 
 See https://rocket.chat/docs/administrator-guides/integrations/ for details on how to generate Rocket.Chat webhooks.
 
+## Message Format
+
+Rocket.Chat messages produced by this webhook will have the following basic format (based on the keys in the [Alertmanager request](sample-request.json)):
+
+    [annotations.severity OR status] annotations.summary
+    annotations.description
+
+You are responsible to put all labels you would like to see into the summary or the description when you define the alert rules for Prometheus. The description is optional, leave it empty if it does not contain additional information.
+
+You may optionally set the label `rocketchat_channel` in the alert rule to route a message to a custom channel.
+
+
 ## Installation
 
 ### Rocket.Chat
@@ -23,8 +35,6 @@ Create Integration. Copy the WebHook URL and proceed to Alertmanager.
 Create a new receiver or modify config of existing one. You'll need to add `webhooks_config` to it. Small example:
 
     route:
-      repeat_interval: 30m
-      group_interval: 30m
       receiver: rocketchat
 
     receivers:
@@ -44,4 +54,4 @@ To test the webhook, you may send a sample request to your Rocket.Chat instance:
 ## License
 
 prometheus-rocket-chat is released under the terms of the MIT License.
-Copyright 2019 Puzzle ITC GmbH. See `LICENSE` for further information.
+Copyright 2019-2020 Puzzle ITC GmbH. See `LICENSE` for further information.

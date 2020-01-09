@@ -33,20 +33,20 @@ class Script {
   }
 
   getAlertColor(status) {
-    let color = "warning";
     if (status === "resolved") {
-      color = "good";
+      return "good";
     } else if (status === "firing") {
-      color = "danger";
+      return "danger";
+    } else {
+      return "warning";
     }
-    return color;
   }
 
   getAlertTitle(alert, status) {
     let title = "[" + this.getAlertStatus(alert, status).toUpperCase() + "] ";
     if (!!alert.annotations.summary) {
       title += alert.annotations.summary;
-    } else {
+    } else if (!!alert.labels.alertname) {
       title += alert.labels.alertname + ": " + alert.labels.instance;
     }
     return title;
