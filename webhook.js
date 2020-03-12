@@ -1,5 +1,6 @@
 /*
- * See https://rocket.chat/docs/administrator-guides/integrations/
+ * This script is maintained at https://github.com/puzzle/prometheus-rocket-chat/blob/master/webhook.js
+ * See https://rocket.chat/docs/administrator-guides/integrations/ for a how-to.
  */
 class Script {
   process_incoming_request({ request }) {

@@ -5,7 +5,8 @@
     {
       "labels": {
         "alertname": "http probe 2xx",
-        "instance": "node-exporter:9100"
+        "instance": "node-exporter:9100",
+        "custom": "yiehaa"
       },
       "annotations": {
         "summary": "node-exporter:9100 - Not OK",
